@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <title>回忆宝箱</title>
+
+    <script type="text/javascript">
+        function textModify() {
+            var obj = document.getElementsByClassName("date");
+            obj.innerHTML = obj.format(obj);
+        }
+    </script>
+</head>
+
+<body>
+    <section class="hero is-info is-small">
+        <div class="hero-body">
+            <div style="margin-left:10% ">
+                <h1 class="title is-2">
+                    回忆宝箱</h1>
+            </div>
+            <div class="tabs" style="margin-left:80px ;margin-top:10px ;">
+                <ul>
+                    <li class="is-active"><a th:href="@{/memory/get(type=0)}" style="font-size:20px">游记</a></li>
+                    <li><a th:href="@{/memory/get/type(type=3)}" style="font-size:20px">日常</a></li>
+                    <li><a th:href="@{/memory/get/type(type=1)}" style="font-size:20px">悄悄话</a></li>
+                    <li><a th:href="@{/memory/get/type(type=2)}" style="font-size:20px">备忘录</a></li>
+                    <li><a th:href="@{/photo/get}" style="font-size:20px">照片</a></li>
+                    <li><a th:href="@{/list/get}" style="font-size:20px">我想去打卡了</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    <div class="columns" style="margin-top:20px">
+        <div class="column">
+            <div class="level" style="margin-top:20px">
+                <p class="level-item has-text-centered">
+                    <a class="button is-info is-rounded" th:href="@{/memory/edit}">Add</a>
+                </p>
+
+            </div>
+
+        </div>
+        <div class="column is-half" style="margin-right:20px">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card activator blue-grey darken-1" th:each="article:${articles}">
+                        <div class="card activator blue-grey darken-1 card-content">
+                            <span class="card-title title is-3" th:text="${article.title}">烟花三月下扬州</span>
+                            <a th:href="@{/memory/delete(id=${article.id})}"
+                                style="float: right; font-size: 20px">删除</a>
+                            <p th:text="${article.content}" style="margin-top: 20px;font-size: 23px">测试</p>
+                            <span th:text="发布于+${#dates.format(article.create,'yyyy-MM-dd')}" style="float: right;" class="date">发布于Sat May 04 04:44:59
+                                CST
+                                2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="margin-left:20px;margin-right: 30px">
+
+        </div>
+    </div>
+</body>
+
+</html>

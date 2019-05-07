@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <title>回忆宝箱</title>
+</head>
+
+<body>
+    <nav class="level" style="margin-top:20px">
+        <p class="title is-3 level-item has-text-centered">
+            添加新的内容吧!
+        </p>
+    </nav>
+    <div class="columns">
+        <div class="column"></div>
+        <div class="column  is-half">
+            <div class="field">
+                <div class="control">
+                    <form th:action="@{/memory/add}" method="POST">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <input class="input" type="text" name="title" placeholder="标题">
+                            </p>
+                            <p class="control">
+                                <div class="select is-clearfix" style="float:right">
+                                    <select name="category">
+                                        <option value="0">游记</option>
+                                        <option value="1">悄悄话</option>
+                                        <option value="2">备忘录</option>
+                                        <option value="3">日常</option>
+                                    </select>
+                                </div>
+                            </p>
+
+                        </div>
+                        <div style="margin-top:20px">
+                            <textarea class="textarea" placeholder="内容" rows="30" name="content"></textarea>
+                        </div>
+                        <div class="level" style="margin-top:20px">
+                            <p class="level-item has-text-centered">
+                                <input class="button is-info" type="submit" value="添加" style="width:20%">
+                            </p>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+
+</body>
+
+</html>

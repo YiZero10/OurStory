@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <title>回忆宝箱</title>
+</head>
+
+<body>
+    <section class="hero is-info is-small">
+        <div class="hero-body">
+            <div style="margin-left:10% ">
+                <h1 class="title is-2">
+                    回忆宝箱
+                </h1>
+            </div>
+            <div class="tabs" style="margin-left:80px ;margin-top:10px ;">
+                <ul>
+                    <li class="is-active"><a th:href="@{/memory/get(type=0)}" style="font-size:20px">游记</a></li>
+                    <li><a th:href="@{/memory/get/type(type=3)}" style="font-size:20px">日常</a></li>
+                    <li><a th:href="@{/memory/get/type(type=1)}" style="font-size:20px">悄悄话</a></li>
+                    <li><a th:href="@{/memory/get/type(type=2)}" style="font-size:20px">备忘录</a></li>
+                    <li><a th:href="@{/photo/get}" style="font-size:20px">照片</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    <div class="columns" style="margin-top:20px">
+
+        <div class="column">
+            <form th:action="@{/photo/add}" method="post" enctype="multipart/form-data">
+                <div class="file is-centered">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="file">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                选择一个文件上传
+                            </span>
+                        </span>
+                    </label>
+                </div>
+                <div class="file is-centered is-boxed" style="margin-top:10px">
+                    <label class="file-label">
+                        <input class="input" type="text" name="description" placeholder="The description of photo!">
+                        <input type="hidden" value="0" name="status">
+                    </label>
+                </div>
+                <div>
+                </div>
+                <div class="level" style="margin-top:20px">
+                    <p class="level-item has-text-centered">
+                        <input class="button is-info" type="submit" value="添加" style="width:20%">
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="column is-half" style="margin-right:20px">
+            <img th:src=@{http://47.106.250.72:3004/16014430594115.jpg}>
+            <img th:src=@{http://47.106.250.72:3004/17454442142876.jpg}>
+        </div>
+        <div class="column" style="margin-left:20px;margin-right: 30px">
+        </div>
+    </div>
+</body>
+
+</html>

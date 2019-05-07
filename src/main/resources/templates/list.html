@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <title>打卡</title>
+</head>
+
+<body>
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-2">
+                    恋爱打卡
+                </h1>
+            </div>
+        </div>
+    </section>
+    <div class="columns" style="margin:10px">
+        <div class="column is-one-quarter">
+        </div>
+        <div class="column is-one-third">
+            <div class="field">
+                <div class="control">
+                    <form th:action="@{/list/add}" method="POST">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <input class="input" type="text" name="content" placeholder="Add new list!">
+                            </p>
+                            <p class="control">
+                                <div class="select">
+                                    <select name="listType">
+                                        <option value="0" selected>每日目标</option>
+                                        <option value="1">小目标</option>
+                                    </select>
+                                </div>
+                            </p>
+                            <p class="control" style="margin-left:10px">
+                                <input type="submit" class="button is-info" value="添加">
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div th:each="list:${uncompleted}">
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                        <span th:text="${list.content}">还没有完成</span>
+                    </p>
+                    <form th:action="@{/list/done(id=${list.id})}" method="post">
+                        <p class="control">
+                            <input class="button is-small" type="submit" value="完成">
+                        </p>
+                    </form>
+                    &nbsp;
+                    <form th:action="@{/list/delete(id=${list.id})}" method="post">
+                        <p class="control">
+                            <input class="button is-small" type="submit" value="删除">
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div th:each="list:${complete}">
+                <div>
+                    <s th:text="${list.content}">完成了</s>
+                    <!-- <form th:action="@{/list/delete(id=${list.id})}" method="post">
+                        <button type="submit" style="display:inline">删除</button>
+                    </form> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="column is-one-quarter" style="margin-left:20px">
+            <div class="field">
+                <div class="control">
+                    <form th:action="@{/list/add}" method="POST">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <span style="font-size:23px">这里每天都是要打卡的哦！</span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div th:each="list:${dayuncompleted}">
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                        <span th:text="${list.content}">还没有完成</span>
+                    </p>
+                    <form th:action="@{/list/done(id=${list.id})}" method="post">
+                        <p class="control">
+                            <input class="button is-small" type="submit" value="完成">
+                        </p>
+                    </form>
+                    &nbsp;
+                    <form th:action="@{/list/delete(id=${list.id})}" method="post">
+                        <p class="control">
+                            <input class="button is-small" type="submit" value="删除">
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div th:each="list:${daycomplete}">
+                <div>
+                    <s th:text="${list.content}">完成了</s>
+                    <!-- <form th:action="@{/list/delete(id=${list.id})}" method="post">
+                                <button type="submit" style="display:inline">删除</button>
+                            </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

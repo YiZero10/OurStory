@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Story</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-2">
+                    Our Story Begins...
+                </h1>
+            </div>
+        </div>
+    </section>
+    <div class="tile is-ancestor" style="margin:30px 10px">
+        <div class="tile is-vertical is-7">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification is-danger">
+                        <br>
+                        <p class="title is-3" style="display:inline">在一起已经</p>
+                        <span class="title is-1" th:text="${daysCalculator.togetherDays}"
+                            style="display:inline">200</span>
+                        <p class="title is-3" style="display:inline">天了哦</p>
+                        <br>
+                    </article>
+                    <article class="tile is-child notification is-warning">
+                        <br>
+                        <p class="title is-3" style="display:inline">距离生日还有</p>
+                        <span class="title is-1" th:text="${daysCalculator.birthdayDays}"
+                            style="display:inline">8</span>
+                        <p class="title is-3" style="display:inline">天</p>
+                        <br>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info">
+                        <p class="title">获取更多</p>
+                        <p class="subtitle">Click the button below to get more...</p>
+                        <div class="content">
+                            <div>
+                                <a th:href="@{/memory/get(type=0)}"
+                                    class="button is-primary is-inverted is-outlined">回忆宝箱</a></div>
+                            <br>
+                            <div>
+                                <a th:href="@{/list/get}" target="_blank"
+                                    class="button is-primary is-inverted is-outlined">恋爱打卡</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-primary">
+                    <p class="title">关于TA的传送门</p>
+                    <p class="subtitle">从这里了解TA更多消息</p>
+                    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="http://weibo.com/" style="text-decoration:none" class="is-size-5">微博</a></li>
+                            <li><a href="https://www.xiaohongshu.com/" style="text-decoration:none" class="is-size-5">小红书</a></li>
+                            <li><a href="https://www.bilibili.com/" style="text-decoration:none" class="is-size-5">bilibili</a></li>
+                            <li><a href="https://www.zhuhu.com/" style="text-decoration:none" class="is-size-5">知乎</a></li>
+
+                        </ul>
+                    </nav>
+                </article>
+            </div>
+        </div>
+        <div class="tile is-parent ">
+            <article class="tile is-child notification is-success">
+                <p class="title is-3" style="text-align:center">Welcome!</p>
+                <figure class="image is-3by2" >
+                    <img src="https://wx1.sinaimg.cn/mw690/005XpTbZgy1g1d18konvtj30sg0pwacm.jpg">
+                </figure>
+            </article>
+        </div>
+    </div>
+</body>
+
+</html>
